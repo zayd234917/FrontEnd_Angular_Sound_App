@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <article class="card">
+      <a [routerLink]="['/tracks', track().id]">
+        <h3>{{ track().title }}</h3>
+      </a>
+      <p>{{ track().artists }}</p>
+      <button type="button" (click)="play.emit(track())">Play</button>
+    </article>
+    </body>
+</html>
