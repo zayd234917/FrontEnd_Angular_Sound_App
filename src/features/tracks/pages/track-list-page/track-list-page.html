@@ -1,1 +1,8 @@
-<p>track-list-page works!</p>
+ <input type="search" placeholder="Search tracks..."
+           [value]="query()" (input)="query.set($any($event.target).value)" />
+
+    @for (t of tracks(); track t.id) {
+      <app-track-card [track]="t" (play)="playTrack($event)" />
+    } @empty {
+      <p>No tracks found.</p>
+    }

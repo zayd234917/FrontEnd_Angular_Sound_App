@@ -3,7 +3,7 @@ import { TrackService } from '../../data/track/track.service';
 import { inject } from '@angular/core';
 import { TrackCard } from '../../components/track-card/track-card';
 import { toSignal ,toObservable} from '@angular/core/rxjs-interop';
-import { catchError, of, switchMap ,tap} from 'rxjs';
+import { catchError, debounceTime, of, switchMap ,tap} from 'rxjs';
 import {Track} from '../../data/track/track.model';
 
 @Component({
@@ -17,11 +17,12 @@ export class TrackListPage {
  query = signal('');
  tracks = toSignal(
   toObservable(this.query).pipe(
+    debounceTime(300),
     switchMap((query) => this.trackService.getTracks(query).pipe(catchError(()=> of([] as Track[])))),
   ) ,
     { initialValue: [] as Track[] },
  );
  playTrack(track: Track) {
-  // Handle the play event here, e.g., call a service to play the track
- }
+ return  this.trackService.playTrack(track.id);
+}
 }

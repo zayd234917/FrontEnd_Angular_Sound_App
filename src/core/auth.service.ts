@@ -16,6 +16,7 @@ export class AuthService {
     .post<{ token: string }>(`${this.apiUrl}/auth/login`, { email, password })
     .pipe(
       tap(res => {
+        console.log('Token received:', res.token); // Log the token for debugging
         localStorage.setItem(this.tokenKey, res.token);
       })
     );

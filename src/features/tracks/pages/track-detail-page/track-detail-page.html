@@ -1,1 +1,11 @@
-<p>track-detail-page works!</p>
+@if (track(); as t) {
+  <div>
+    <h1>{{ t.title }}</h1>
+    <p>{{ t.artists.join(', ') }}</p>
+    <!-- <p>Album: {{ t.album.title }} ({{ t.album.realeaseYear }})</p> -->
+    <p>Released: {{ t.release_date }}</p>
+    <button (click)="playTrack(t)">Play</button>
+  </div>
+} @else {
+  <p>Loading...</p>
+}
