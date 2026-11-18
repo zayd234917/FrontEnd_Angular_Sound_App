@@ -3,6 +3,8 @@ import { Token } from '@angular/compiler';
 import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { tap } from 'rxjs';
+import { LoginComponent } from '../features/auth/login.component/login.component';
+import { Home } from '../features/home/home';
 
 @Component({
   selector: 'app-root',

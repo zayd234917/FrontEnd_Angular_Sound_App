@@ -20,6 +20,13 @@ export class AuthService {
       })
     );
   }
+  getTracks() {
+    return this.http.get(`${this.apiUrl}/tracks`);
+  }
+  logout() {
+    localStorage.removeItem(this.tokenKey);
+    this.router.navigate(['/login']);
+  }
   get token(): string | null {
     return localStorage.getItem(this.tokenKey);
   }
